@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "regedit",
+      "camelcase": "Regedit",
+      "title": "Regedit",
+      "scope": "source.regedit",
+      "file-types": [
+        "reg"
+      ],
+      "injection-regex": "^regedit$",
+      "class-name": "TreeSitterRegedit"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Regedit tree sitter grammar",
+    "authors": [
+      {
+        "name": "Jason Ghantous",
+        "email": "jason.ghantous@outlook.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/JasonGH17/tree-sitter-regedit"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
