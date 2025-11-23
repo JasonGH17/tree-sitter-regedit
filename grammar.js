@@ -1,13 +1,14 @@
 module.exports = grammar({
   name: "regedit",
 
-  extras: ($) => [$.comment, /\s/],
+  word: ($) => $.value_type,
+
+  conflicts: () => [],
+
+  extras: ($) => [$.comment, /[ \t\r\n]+/],
 
   rules: {
-    source_file: ($) =>
-      repeat(choice($.header, $.section, $.entry, $.blank_line)),
-
-    blank_line: (_) => /\s*/,
+    source_file: ($) => seq($.header, repeat(choice($.section, $.entry))),
 
     comment: (_) => /;[^\n]*/,
 
@@ -38,7 +39,5 @@ module.exports = grammar({
 
     // support dec and hex
     number: (_) => /0[xX][0-9a-fA-F]+|[0-9]+/,
-
-    continuation: (_) => /\\$/,
   },
 });

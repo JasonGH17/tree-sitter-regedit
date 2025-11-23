@@ -1,34 +1,32 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
-  "name": "reg",
+  "name": "regedit",
+  "word": "value_type",
   "rules": {
     "source_file": {
-      "type": "REPEAT",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "header"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "section"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "entry"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "blank_line"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "header"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "section"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "entry"
+              }
+            ]
           }
-        ]
-      }
-    },
-    "blank_line": {
-      "type": "PATTERN",
-      "value": "\\s*"
+        }
+      ]
     },
     "comment": {
       "type": "PATTERN",
@@ -217,10 +215,6 @@
     "number": {
       "type": "PATTERN",
       "value": "0[xX][0-9a-fA-F]+|[0-9]+"
-    },
-    "continuation": {
-      "type": "PATTERN",
-      "value": "\\\\$"
     }
   },
   "extras": [
@@ -230,7 +224,7 @@
     },
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[ \\t\\r\\n]+"
     }
   ],
   "conflicts": [],

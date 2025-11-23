@@ -63,12 +63,8 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
-        {
-          "type": "blank_line",
-          "named": true
-        },
         {
           "type": "entry",
           "named": true
@@ -191,10 +187,6 @@
   {
     "type": "]",
     "named": false
-  },
-  {
-    "type": "blank_line",
-    "named": true
   },
   {
     "type": "comment",
